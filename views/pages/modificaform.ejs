@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('../partials/head') %>
+<body>
+    <%- include('../partials/header') %>
+<main>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h3 class="mt-4">Modifica ricetta</h3>
+                <form action="/modificaricetta" enctype="multipart/form-data" method="POST">
+                    <div> 
+                        <input type="hidden" name="idObj" id="idObj" value="<%= mostraRicetta._id %>">
+                    </div>
+                    <div>
+                        <label for="titolo">nome della ricetta</label>
+                        <input type="text" name="titolo" id="titolo" value="<%= mostraRicetta.title %>" >
+                    </div>
+                    <div>
+                        <label for="procedimento">descrizione procedimento</label>
+                        <textarea name="howto" id="procedimento" cols="30" rows="10"><%= mostraRicetta.procedimento %></textarea>
+                    </div>
+                    <div>
+                        <label for="ingredienti">ingredienti</label>
+                        <textarea name="ingredienti" id="ingredienti" cols="30" rows="10"><%= mostraRicetta.ingredienti %></textarea>
+                    </div> 
+                    <div>
+                        <label for="file-upload">File selezionato: <%= mostraRicetta.immagine %></label>
+                        <input type="file" name="avatar" id="file-upload">
+                    </div>
+                    <button type="submit" class="btn btn-outline-success">modifica ricetta</button>
+                    <button type="reset" class="btn btn-outline-danger">cancella</button>
+                </form>
+            </div>
+        </div> 
+    </div>
+    </main>
+    <%- include('../partials/footer') %>
+</body>
+</html>

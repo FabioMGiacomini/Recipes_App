@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('../partials/head') %>
+<body>
+    <%- include('../partials/header') %>
+<main>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h3 class="mt-4">Nuova ricetta</h3>
+                <form action="/nuovaricetta" method="POST">
+                    <div>
+                        <label for="titolo">inserisci il nome della ricetta</label>
+                        <input type="text" name="titolo" id="titolo">
+                    </div>
+                    <div>
+                        <label for="procedimento">descrizione procedimento</label>
+                        <textarea name="howto" id="procedimento" cols="30" rows="10"></textarea>
+                    </div>
+                    <div>
+                        <label for="ingredienti">ingredienti</label>
+                        <textarea name="ingredienti" id="ingredienti" cols="30" rows="10"></textarea>
+                    </div> 
+                    <button type="submit" class="btn btn-outline-success">inserisci ricetta</button>
+                    <button type="reset" class="btn btn-outline-danger">cancella</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
+    <%- include('../partials/footer') %>
+</body>
+</html>

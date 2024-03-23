@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('../partials/head') %>
+<body>
+    <%- include('../partials/header') %>
+    <main>
+
+    <div class="nuovaricetta">
+        <button onclick="location.href='inserisci-ricetta'" class="btn btn-outline-success">inserisci una nuova ricetta</button> 
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="ricette">
+                    <div class="ricetta">
+                      <div class="row">
+                          <% libro.forEach( element => { %>
+                          <div class="col-12 col-lg-6">
+                              <div class="card mt-3 shadow border-0">
+                                      <img  src="uploads/<%= element.immagine %>" class="card-img-top">
+                                      <div class="d-flex justify-content-end p-3">
+                                          <a class="btn rounded-circle bg-success shadow me-2" href="/modifica/<%= element.title %>">
+                                              <i class="bi bi-pen" style="font-size: 1.6rem; color: rgb(255, 255, 255);"></i>
+                                           </a>
+                                          <a class="btn rounded-circle bg-danger shadow"  href="/elimina/<%= element.title %>">
+                                              <i class="bi bi-trash3" style="font-size: 1.6rem; color: rgb(255, 255, 255);"></i>
+                                          </a>  
+                                      </div>
+                                      <div class="card-body">
+                                         <h5 class="card-title mb-3"><b><%= element.title.toUpperCase() %></b></h5>
+                                         <p class="card-text mb-0 pb-1">Procedimento: <%= element.procedimento %></p> 
+                                         <p class="card-text mb-0 pb-1">Ingredienti: <%= element.ingredienti %></p> 
+                                         <p class="card-text mb-0 pb-1">Immagine: <%= element.immagine %></p> 
+                                       </div> 
+                              </div> 
+                          </div>  
+                          <% }) %>   
+                      </div>
+                     </div>
+              </div>
+            </div>
+        </div>
+    </div>
+    </main>
+    <%- include('../partials/footer') %>
+</body>
+</html>
