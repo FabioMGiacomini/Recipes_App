@@ -6,5 +6,6 @@
 <p>The front end is rendered with a template engine <a href="https://github.com/mde/ejs/tree/main">EJS</a></p>
 
 
+
 Tags:
-#NodeJS #JavaScript #MongoDB
+#NodeJS #JavaScript #MongoDB #EJS
