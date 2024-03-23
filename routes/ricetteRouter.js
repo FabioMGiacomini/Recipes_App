@@ -2,10 +2,7 @@ const express = require('express')
 const router = express.Router()
 const Ricetta = require('../models/ricettaSchema')
 const funzioniRicette = require('../models/ricettario')
-
-const multer = require('multer');
- 
- 
+  
 
 router.get('/', async (req, res) => {
     const libro = await funzioniRicette.mostraRicette()

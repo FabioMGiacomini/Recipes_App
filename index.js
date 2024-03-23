@@ -11,18 +11,18 @@ connectDB()
 
 const app = express()
 
-app.set('view engine', 'ejs') // inizializzo il template engine javascript ejs
-app.set('views', path.join(__dirname, 'views')) // senza questo la dir views viene cercata in quella di package.json
+app.set('view engine', 'ejs')  
+app.set('views', path.join(__dirname, 'views'))  
 
 app.use(express.urlencoded({extended: false}))
-app.use(express.json()) // mi serve per req.body
+app.use(express.json())  
 
-// importo bootstrap
+// bootstrap files
 app.use('/css', express.static(path.join(__dirname, '../node_modules/bootstrap/dist/css')))
 app.use('/css', express.static(path.join(__dirname, '../node_modules/bootstrap-icons/font')))
 app.use('/js', express.static(path.join(__dirname, '../node_modules/bootstrap/dist/js')))
 
-// con questo punto al file style in css
+// to import my style 
 app.use(express.static(path.join(__dirname + '/public')))
  
 app.use("/", routeRicette);  
