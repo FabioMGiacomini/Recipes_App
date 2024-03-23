@@ -4,18 +4,8 @@ const Ricetta = require('../models/ricettaSchema')
 const funzioniRicette = require('../models/ricettario')
 
 const multer = require('multer');
-//const storage = multer({dest: 'v2/public/uploads/'}) 
-
-const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-      cb(null, 'v2/public/uploads/')
-    },
-    filename: function (req, file, cb) {
-      cb(null, file.originalname)
-    }
-  })
-  
-const upload = multer({ storage: storage })
+ 
+ 
 
 router.get('/', async (req, res) => {
     const libro = await funzioniRicette.mostraRicette()
@@ -28,11 +18,8 @@ router.get('/ricetta/:titolo', async (req, res) => {
     res.send(mostraRicetta)
   })
 
-router.get('/inserisci-ricetta', (req, res) => {
-    res.render('pages/imageForm')
-})
 
-router.get('/inserisci-ricetta-senza-immagine', (req, res) => {
+router.get('/inserisci-ricetta', (req, res) => {
     res.render('pages/form')
 })
 
@@ -42,22 +29,10 @@ router.get('/elimina/:titolo', async (req, res) => {
     res.redirect('/')
 })
 
-router.post('/nuovaricettafoto', upload.single('avatar'), async (req,res)=>{
-    const ricettaDaInserire = {
-        title: req.body.titolo,
-        procedimento: req.body.howto, // è l'attributo name del form che va inserito
-        ingredienti: req.body.ingredienti, 
-        immagine: req.file.originalname, 
-    }
-    //console.log(req.body, img, req.file.path)
-    await funzioniRicette.nuovaRicetta(ricettaDaInserire) 
-    res.redirect('/')
-})
-
 router.post('/nuovaricetta', async (req,res)=>{
     const ricettaDaInserire = {
         title: req.body.titolo,
-        procedimento: req.body.howto, // è l'attributo name del form che va inserito
+        procedimento: req.body.howto,  
         ingredienti: req.body.ingredienti, 
     }
     await funzioniRicette.nuovaRicetta(ricettaDaInserire) 
@@ -70,13 +45,13 @@ router.get('/modifica/:titolo', async (req, res) => {
     res.render('pages/modificaform', { mostraRicetta })
 })
 
-router.post('/modificaricetta', upload.single('avatar'), async (req,res)=>{
+router.post('/modificaricetta', async (req,res)=>{
     const ricettaDaModificare = {
         id:req.body.idObj,
         title: req.body.titolo,
         procedimento: req.body.howto, 
         ingredienti: req.body.ingredienti,
-        immagine: req.file.originalname 
+        immagine: req.body.urlimg
     }
     await funzioniRicette.modificaRicetta(ricettaDaModificare) 
     res.redirect('/')
