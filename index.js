@@ -18,9 +18,9 @@ app.use(express.urlencoded({extended: false}))
 app.use(express.json())  
 
 // bootstrap files
-app.use('/css', express.static(path.join(__dirname, '../node_modules/bootstrap/dist/css')))
-app.use('/css', express.static(path.join(__dirname, '../node_modules/bootstrap-icons/font')))
-app.use('/js', express.static(path.join(__dirname, '../node_modules/bootstrap/dist/js')))
+app.use('/css', express.static(path.join(__dirname, './node_modules/bootstrap/dist/css')))
+app.use('/css', express.static(path.join(__dirname, './node_modules/bootstrap-icons/font')))
+app.use('/js', express.static(path.join(__dirname, './node_modules/bootstrap/dist/js')))
 
 // to import my style 
 app.use(express.static(path.join(__dirname + '/public')))
