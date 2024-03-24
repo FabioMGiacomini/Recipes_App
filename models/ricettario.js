@@ -41,9 +41,6 @@ async function modificaRicetta(modobj){
     immagine: modobj.immagine,
   }
     try {
-     /*  const ricetteDaMostrare = await Ricetta.findOneAndUpdate(filter, update, {
-        new: true
-      }); */
       const ricetteDaMostrare =  Ricetta.findByIdAndUpdate(filter, update)
       return ricetteDaMostrare
     } catch (error) {
