@@ -6,7 +6,8 @@
 
 ## How to start
 
-<p>The only thing you need is an account on MongoDB Atlas (it's free) and a username and password to start. To sign in go here https://account.mongodb.com/account/login</p> 
+`<p>`The only thing you need is an account on MongoDB Atlas (it's free) and a username and password to start. To sign in go here https://account.mongodb.com/account/login `</p>`
+
 <h3>Create a database and a user to operate with it. </h3>
 <p>Save the user name and password and the db name in your config.env file to import them in index.js</p>
 
@@ -14,6 +15,6 @@ There's no need to create a collection, the schema model creates that for you to
 
 ### Front Page
 
-The front end is rendered with a template engine [EJS](`<a href="https://github.com/mde/ejs/tree/main">`)
+<p>The front end is rendered with the template engine EJS</p>
 
-The views folder contains pages and partials to create the site and to manage functions and parameters
+<p>The views folder contains pages and partials to create the site and to manage functions and parameters</p>
