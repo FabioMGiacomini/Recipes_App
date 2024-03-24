@@ -2,7 +2,7 @@
 
 ## Description
 
-<p>You can do any CRUD (create, read, update, delete) operation. The app follows the MVC schema to have a cleaner vision of everything.</p>
+<p>You can do any CRUD (create, read, update, delete) operation. The app follows the MVC schema to have a cleaner structure</p>
 
 ## How to start
 
