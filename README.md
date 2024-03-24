@@ -7,5 +7,9 @@
 ## How to start
 
 <p>The only thing you need is an account on MongoDB Atlas (it's free) and a username and password to start. To sign in go here https://account.mongodb.com/account/login</p> 
-<p>Save your credentials in a config.env file and import it in server.js</p>
+<h3>Create a database and a user to operate with it. </h3>
+<p>Save the user name and password and the db name in your config.env file to import them in index.js</p>
+
+There's no need to create a collection, the schema model creates that for you to avoid errors.
+
 <p>The front end is rendered with a template engine <a href="https://github.com/mde/ejs/tree/main">EJS</a></p>
