@@ -6,7 +6,7 @@
 
 ## How to start
 
-`<p>`The only thing you need is an account on MongoDB Atlas (it's free) and a username and password to start. To sign in go here https://account.mongodb.com/account/login `</p>`
+The only thing you need is an account on MongoDB Atlas (it's free) and a username and password to start. To sign in go here https://account.mongodb.com/account/login
 
 <h3>Create a database and a user to operate with it. </h3>
 <p>Save the user name and password and the db name in your config.env file to import them in index.js</p>
