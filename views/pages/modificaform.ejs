@@ -8,7 +8,7 @@
         <div class="row">
             <div class="col-12">
                 <h3 class="mt-4">Modifica ricetta</h3>
-                <form action="/modificaricetta" enctype="multipart/form-data" method="POST">
+                <form action="/modificaricetta" method="POST">
                     <div> 
                         <input type="hidden" name="idObj" id="idObj" value="<%= mostraRicetta._id %>">
                     </div>
@@ -26,7 +26,7 @@
                     </div> 
                     <div>
                         <label for="file-url">File selezionato: <%= mostraRicetta.immagine %></label>
-                        <input type="text" name="urlimg" id="file-url">
+                        <input type="text" name="urlimg" id="file-url" placeholder="<%= mostraRicetta.immagine %>">
                     </div>
                     <button type="submit" class="btn btn-outline-success">modifica ricetta</button>
                     <button type="reset" class="btn btn-outline-danger">cancella</button>

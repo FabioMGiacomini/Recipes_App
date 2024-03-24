@@ -31,6 +31,7 @@ router.post('/nuovaricetta', async (req,res)=>{
         title: req.body.titolo,
         procedimento: req.body.howto,  
         ingredienti: req.body.ingredienti, 
+        immagine: req.body.urlimg
     }
     await funzioniRicette.nuovaRicetta(ricettaDaInserire) 
     res.redirect('/')

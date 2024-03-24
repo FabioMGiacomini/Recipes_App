@@ -17,7 +17,7 @@
                           <% libro.forEach( element => { %>
                           <div class="col-12 col-lg-6">
                               <div class="card mt-3 shadow border-0">
-                                      <img  src="uploads/<%= element.immagine %>" class="card-img-top">
+                                      <img  src="<%= element.immagine %>" class="card-img-top">
                                       <div class="d-flex justify-content-end p-3">
                                           <a class="btn rounded-circle bg-success shadow me-2" href="/modifica/<%= element.title %>">
                                               <i class="bi bi-pen" style="font-size: 1.6rem; color: rgb(255, 255, 255);"></i>
@@ -30,7 +30,12 @@
                                          <h5 class="card-title mb-3"><b><%= element.title.toUpperCase() %></b></h5>
                                          <p class="card-text mb-0 pb-1">Procedimento: <%= element.procedimento %></p> 
                                          <p class="card-text mb-0 pb-1">Ingredienti: <%= element.ingredienti %></p> 
-                                         <p class="card-text mb-0 pb-1">Immagine: <%= element.immagine %></p> 
+                                         <p class="card-text mb-0 pb-1">Immagine: <%= element.title %></p> 
+                                        <% const srcImg = element.immagine
+                                           const httpAddr = srcImg.slice(0,4)
+                                           if (httpAddr==='http'){ %>  
+                                               <p>courtesy of <a href="https://pexels.com" target="_blank">Pexels</a>
+                                         <% } %>   
                                        </div> 
                               </div> 
                           </div>  
