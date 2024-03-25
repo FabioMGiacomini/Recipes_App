@@ -6,7 +6,7 @@ const connectDB = require('./data/connect')
 const routeRicette = require('./routes/ricetteRouter') 
 
 // load config
-dotenv.config({ path: './config.env' })
+dotenv.config({ path: './.env' })
 connectDB()
 
 const app = express()

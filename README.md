@@ -8,8 +8,10 @@
 
 The only thing you need is an account on MongoDB Atlas (it's free) and a username and password to start. To sign in go here https://account.mongodb.com/account/login
 
-<h3>Create a database and a user to operate with it. </h3>
-<p>Save the user name and password and the db name in your config.env file to import them in index.js</p>
+<h3>Create a database and a user on MongoDB. </h3>
+<p>Once you have your credentials on MongoDB, create a new .env file in the same folder of index.js with this string</p>
+<p><code>ricette_uri = "mongodb+srv://USERNAME:PASSWORD@clusternodejs.hbaowix.mongodb.net/DB_NAME?retryWrites=true&w=majority"</code></p>
+<p>and write your user name and password and the db name in it </p>
 
 There's no need to create a collection, the schema model creates that for you to avoid errors.
 
