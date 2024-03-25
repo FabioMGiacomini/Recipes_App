@@ -56,7 +56,7 @@ router.post('/modificaricetta', async (req,res)=>{
 })
 
 router.all('*', (req, res) => {
-    res.send('<h2>Pagina non trovata</h2><p>Torna in <a href="/">home</a></p>')
+    res.status(404).send('<h1 style="text-align:center;">Pagina non trovata</h1><h3 style="text-align:center;">Torna in <a href="/">home</a></h3>')
 })
 
 
