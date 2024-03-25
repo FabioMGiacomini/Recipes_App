@@ -28,5 +28,6 @@ app.use(express.static(path.join(__dirname + '/public')))
 app.use("/", routeRicette);  
 
  
+const PORT = process.env.PORT 
 
-app.listen(3000, console.log(`Server runngin on port 3000`))
+app.listen(PORT, () => console.log(`server running in ${process.env.NODE_ENV} mode on port ${PORT}`))

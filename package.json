@@ -4,8 +4,8 @@
   "description": "italians recipes",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon index.js",
-    "start": "node index.js"
+    "start": "PORT=80 NODE_ENV=production node index",
+    "dev": "PORT=3000 NODE_ENV=development nodemon index"
   },
   "keywords": [],
   "author": "Fabio Giacomini <info@viarete.it>",
