@@ -21,21 +21,21 @@
                                       <% if(element.immagine) { %>
                                       <label for="topFoto" class="topfoto">Credits: <%= element.immagine %></label>
                                       <% } %>
-                                      <div class="card-body d-flex justify-content-between">
-                                        <div class="pt-3">
+                                      <div class="card-body d-flex justify-content-between pt-0">
+                                        <div class="pt-5">
                                             <h5 class="card-title mb-3"><%= element.title.toUpperCase() %></h5>
-                                            <p class="card-text mb-0 pb-1">Procedimento: <%= element.procedimento %></p> 
-                                            <p class="card-text mb-0 pb-1">Ingredienti: <%= element.ingredienti %></p>                                        
+                                            <p class="card-text mb-0 pb-1"><strong>Procedimento</strong><br> <%= element.procedimento %></p> 
+                                            <p class="card-text mb-0 pb-1"><strong>Ingredienti</strong><br> <%= element.ingredienti %></p>                                        
                                            </div> 
                                         <div class="d-flex justify-content-end p-3">
-                                            <div>
+                                          <div class="special-buttons"> 
                                             <a class="btn rounded-circle bg-success shadow me-2" href="/modifica/<%= element.title %>">
                                                 <i class="bi bi-pen" style="font-size: 1.6rem; color: rgb(255, 255, 255);"></i>
                                              </a>
                                             <a class="btn rounded-circle bg-danger shadow"  href="/elimina/<%= element.title %>">
                                                 <i class="bi bi-trash3" style="font-size: 1.6rem; color: rgb(255, 255, 255);"></i>
                                             </a>  
-                                        </div>
+                                           </div>
                                         </div>
                                     </div>
                               </div> 

@@ -66,8 +66,14 @@ body{
     }
     label.topfoto{
         padding: 10px;
+        margin-bottom: 0;
         font-size: 10px;
         font-style: italic;
+        padding-bottom: 0;
+    }
+    .special-buttons{
+        width: 120px;
+        position: absolute;
     }
     footer{
         margin-top: 30px;

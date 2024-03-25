@@ -26,7 +26,11 @@
                     </div> 
                     <div>
                         <label for="file-url">url selezionato: <%= mostraRicetta.immagine %></label>
-                        <input type="text" name="urlimg" id="file-url" placeholder="<%= mostraRicetta.immagine %>">
+                        <% if ( mostraRicetta.immagine ){ %>
+                        <input type="text" name="urlimg" id="file-url" value="<%= mostraRicetta.immagine %>">
+                        <% } else { %>
+                        <input type="text" name="urlimg" id="file-url" placeholder="inserisci url immagine">  
+                        <% } %> 
                     </div>
                     <button type="submit" class="btn btn-outline-success">modifica ricetta</button>
                     <button type="button" onclick="window.location.href='/'" class="btn btn-outline-danger">annulla</button>
