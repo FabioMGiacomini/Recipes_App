@@ -17,7 +17,10 @@
                           <% libro.forEach( element => { %>
                           <div class="col-12 col-lg-6">
                               <div class="card mt-3 shadow border-0">
-                                      <img  src="<%= element.immagine %>" class="card-img-top">
+                                      <img  src="<%= element.immagine %>" class="card-img-top" id="topFoto">
+                                      <% if(element.immagine) { %>
+                                      <label for="topFoto" class="topfoto">Credits: <%= element.immagine %></label>
+                                      <% } %>
                                       <div class="d-flex justify-content-end p-3">
                                           <a class="btn rounded-circle bg-success shadow me-2" href="/modifica/<%= element.title %>">
                                               <i class="bi bi-pen" style="font-size: 1.6rem; color: rgb(255, 255, 255);"></i>

@@ -61,6 +61,11 @@ body{
         object-fit: cover;
         width: 100%;
     }
+    label.topfoto{
+        padding: 10px;
+        font-size: 10px;
+        font-style: italic;
+    }
     footer{
         margin-top: 30px;
         padding: 20px;  
