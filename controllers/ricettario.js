@@ -1,6 +1,6 @@
 const Ricetta = require('../models/ricettaSchema')
 
-// GET all recipes 
+// GET all recipes  
 const mostraRicette = async () => {
   try {
     const ricetteDaMostrare = await Ricetta.find({})
@@ -8,7 +8,7 @@ const mostraRicette = async () => {
   } catch (error) {
     console.error(error)
   }
-}
+}  
 
 // find a single recipe by title
 const cercaRicetta = async (nome) => {
