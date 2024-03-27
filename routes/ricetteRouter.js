@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const Ricetta = require('../models/ricettaSchema')
-const funzioniRicette = require('../models/ricettario')
+const funzioniRicette = require('../controllers/ricettario')
   
 
 router.get('/', async (req, res) => {
