@@ -1,14 +1,14 @@
 const Ricetta = require('../models/ricettaSchema')
 
 // GET all recipes  
-const mostraRicette = async () => {
+const mostraRicette = async (req, res) => {
   try {
-    const ricetteDaMostrare = await Ricetta.find({})
-    return ricetteDaMostrare
+    const ricetteDaMostrare = await Ricetta.find({}) 
+    res.render('pages/index', { ricetteDaMostrare })
   } catch (error) {
     console.error(error)
   }
-}  
+}   
 
 // find a single recipe by title
 const cercaRicetta = async (nome) => {

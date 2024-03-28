@@ -4,10 +4,11 @@ const Ricetta = require('../models/ricettaSchema')
 const funzioniRicette = require('../controllers/ricettario')
   
 
-router.get('/', async (req, res) => {
+/* router.get('/', async (req, res) => {
     const libro = await funzioniRicette.mostraRicette()
     res.render('pages/index', { libro })
-})    
+})   */  
+router.get('/', funzioniRicette.mostraRicette )  
 
 router.get('/ricetta/:titolo', async (req, res) => {
     const nomeRicetta = req.params.titolo 
