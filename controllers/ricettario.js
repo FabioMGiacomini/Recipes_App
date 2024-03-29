@@ -1,53 +1,31 @@
 const Ricetta = require('../models/ricettaSchema')
 
 // GET all recipes  
-const mostraRicette = async (req, res) => {
-  try {
-    const ricetteDaMostrare = await Ricetta.find({}) 
-    res.render('pages/index', { ricetteDaMostrare })
-  } catch (error) {
-    console.error(error)
-  }
+function mostraRicette() {
+  return new Promise((resolve, reject) => {
+    const allRecipes = Ricetta.find({})
+    resolve(allRecipes)
+  })
 }   
 
-// GET and return a single recipe 
-/* const singleRecipe = async (nome) => {
-  try {
-    const ricerca = await Ricetta.findOne({title: nome}) 
-    return ricerca
-  } catch (error) {
-    console.error(error)
-  }
-}
- */
-const singleRecipe =  (nome) => { 
+// @desc Find a single recipe by title
+function singleRecipe(nome) {
   return new Promise((resolve, reject) => {
-    const ricettaSingola = Ricetta.findOne({title: nome}) 
+    const ricettaSingola = Ricetta.findOne({ title: nome })
     resolve(ricettaSingola)
-    })  
+  })
 }
 
-// find a single recipe by title
-const cercaRicetta = async (nome) => {
-  try {
-    const ricettaDaMostrare = await Ricetta.findOne({title: nome})
-    console.log(ricettaDaMostrare)
-    return ricettaDaMostrare
-  } catch (error) {
-    console.error(error)
-  }
+// @desc Create new recipe
+function newRecipe(obj) {
+  return new Promise((resolve, reject) => {
+    const saveRecipe = new Ricetta(obj)
+    saveRecipe.save()
+    resolve(saveRecipe)
+  })
 }
 
-// Create a new recipe
-const nuovaRicetta = async (obj) => {
-    try {
-      const newRecipe = new Ricetta(obj)
-      await newRecipe.save()
-      return 
-    } catch(error) {
-      console.error(error)
-    }  
-  }
+
 
   // Edit a recipe by id
 const modificaRicetta = async (modobj) => {
@@ -82,11 +60,10 @@ const eliminaRicetta = async (nome) => {
   }
 }  
   
-module.exports = { 
-  nuovaRicetta, 
+module.exports = {  
   mostraRicette,
-  singleRecipe,
-  cercaRicetta,
+  singleRecipe, 
   modificaRicetta,
   eliminaRicetta, 
+  newRecipe,
 }

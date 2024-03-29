@@ -4,25 +4,16 @@ const Ricetta = require('../models/ricettaSchema')
 const funzioniRicette = require('../controllers/ricettario')
   
 
-/* router.get('/', async (req, res) => {
-    const libro = await funzioniRicette.mostraRicette()
-    res.render('pages/index', { libro })
-})   */  
-router.get('/', funzioniRicette.mostraRicette )  
-
-/* router.get('/ricetta/:titolo', async (req, res) => {
-    const nomeRicetta = req.params.titolo 
-    const mostraRicetta = await funzioniRicette.cercaRicetta(nomeRicetta)
-    res.send(mostraRicetta)
-  }) */
-
-router.get('/ricetta/:titolo', async (req, res) => { 
-  /*   try {
-        const ricerca = await Ricetta.findOne({title: nome}) 
-        return ricerca
-      } catch (error) {
+router.get('/', async (req, res) => {
+    try {
+        const ricetteDaMostrare = await funzioniRicette.mostraRicette() 
+        res.render('pages/index', { ricetteDaMostrare })
+    } catch (error) {
         console.error(error)
-      } */
+    }
+})  
+
+router.get('/ricetta/:titolo', async (req, res) => {  
 try {
         const ricerca = await funzioniRicette.singleRecipe(req.params.titolo) 
         res.render('pages/single-recipe', { ricerca }) 
@@ -42,6 +33,22 @@ router.get('/elimina/:titolo', async (req, res) => {
 })
 
 router.post('/nuovaricetta', async (req,res)=>{
+    try {
+        const ricettaDaInserire = {
+            title: req.body.titolo,
+            procedimento: req.body.howto,  
+            ingredienti: req.body.ingredienti, 
+            immagine: req.body.urlimg
+        }
+       const ricerca = await funzioniRicette.newRecipe(ricettaDaInserire)  
+       res.render('pages/single-recipe', { ricerca }) 
+        
+    } catch (error) {
+        
+    }
+})
+
+/* router.post('/nuovaricetta', async (req,res)=>{
     const ricettaDaInserire = {
         title: req.body.titolo,
         procedimento: req.body.howto,  
@@ -50,11 +57,11 @@ router.post('/nuovaricetta', async (req,res)=>{
     }
     await funzioniRicette.nuovaRicetta(ricettaDaInserire) 
     res.redirect('/')
-})
+}) */
 
 router.get('/modifica/:titolo', async (req, res) => {
     const nomeRicetta = req.params.titolo 
-    const mostraRicetta = await funzioniRicette.cercaRicetta(nomeRicetta)
+    const mostraRicetta = await funzioniRicette.singleRecipe(nomeRicetta)
     res.render('pages/modificaform', { mostraRicetta })
 })
 
