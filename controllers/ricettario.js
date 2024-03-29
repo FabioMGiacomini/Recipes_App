@@ -11,13 +11,20 @@ const mostraRicette = async (req, res) => {
 }   
 
 // GET and return a single recipe 
-const singleRecipe = async (nome) => {
+/* const singleRecipe = async (nome) => {
   try {
     const ricerca = await Ricetta.findOne({title: nome}) 
     return ricerca
   } catch (error) {
     console.error(error)
   }
+}
+ */
+const singleRecipe =  (nome) => { 
+  return new Promise((resolve, reject) => {
+    const ricettaSingola = Ricetta.findOne({title: nome}) 
+    resolve(ricettaSingola)
+    })  
 }
 
 // find a single recipe by title

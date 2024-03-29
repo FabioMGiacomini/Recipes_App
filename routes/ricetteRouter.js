@@ -17,9 +17,18 @@ router.get('/', funzioniRicette.mostraRicette )
   }) */
 
 router.get('/ricetta/:titolo', async (req, res) => { 
-    const titolo = req.params.titolo
-    const ricerca = await funzioniRicette.singleRecipe(titolo) 
-    res.render('pages/single-recipe', { ricerca }) 
+  /*   try {
+        const ricerca = await Ricetta.findOne({title: nome}) 
+        return ricerca
+      } catch (error) {
+        console.error(error)
+      } */
+try {
+        const ricerca = await funzioniRicette.singleRecipe(req.params.titolo) 
+        res.render('pages/single-recipe', { ricerca }) 
+    } catch (error) {
+        console.error(error)
+    } 
 })
 
 router.get('/inserisci-ricetta', (req, res) => {

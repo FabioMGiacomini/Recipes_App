@@ -1,3 +1,15 @@
+### 2024-03-29
+
+NEW
+
+link go to the recipe and back home in every recipe and in homepage
+
+MODIFIED
+
+Ricettario.j: new way to manage function with Promise. 
+
+RicetteRouter: try catch in every function
+
 ### 2024-03-28
 
 NEW 
