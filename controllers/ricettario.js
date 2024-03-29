@@ -26,23 +26,28 @@ function newRecipe(obj) {
 }
 
 
-
-  // Edit a recipe by id
-const modificaRicetta = async (modobj) => {
-  const filter = {_id: modobj.id}
+/* @params   upsert: if true, and no documents found, insert a new document 
+**           new: if true, return the modified document rather than the original
+** @desc     update a recipe and goes to the recipe page right after
+*/
+  function updateRecipe(modobj) {
+  const filter = { _id: modobj.id }
   const update = {
     title: modobj.title,
     procedimento: modobj.procedimento,
     ingredienti: modobj.ingredienti,
     immagine: modobj.immagine,
   }
-    try {
-      const ricetteDaMostrare =  Ricetta.findByIdAndUpdate(filter, update)
-      return ricetteDaMostrare
-    } catch (error) {
-      console.error(error)
-    }
-  }  
+  const options = {
+    upsert: true,
+    new: true
+  }
+  return new Promise((resolve,reject)=>{
+    const ricetteDaMostrare = Ricetta.findByIdAndUpdate(filter, update, options)
+    resolve(ricetteDaMostrare)
+  })
+  
+}  
 
 // Delete a recipe  
 const eliminaRicetta = async (nome) => {
@@ -63,7 +68,7 @@ const eliminaRicetta = async (nome) => {
 module.exports = {  
   mostraRicette,
   singleRecipe, 
-  modificaRicetta,
+  updateRecipe,
   eliminaRicetta, 
   newRecipe,
 }

@@ -48,16 +48,7 @@ router.post('/nuovaricetta', async (req,res)=>{
     }
 })
 
-/* router.post('/nuovaricetta', async (req,res)=>{
-    const ricettaDaInserire = {
-        title: req.body.titolo,
-        procedimento: req.body.howto,  
-        ingredienti: req.body.ingredienti, 
-        immagine: req.body.urlimg
-    }
-    await funzioniRicette.nuovaRicetta(ricettaDaInserire) 
-    res.redirect('/')
-}) */
+
 
 router.get('/modifica/:titolo', async (req, res) => {
     const nomeRicetta = req.params.titolo 
@@ -73,9 +64,27 @@ router.post('/modificaricetta', async (req,res)=>{
         ingredienti: req.body.ingredienti,
         immagine: req.body.urlimg
     }
+    try {
+        const ricerca = await funzioniRicette.updateRecipe(ricettaDaModificare)  
+        res.render('pages/single-recipe', { ricerca }) 
+  } catch (error) {
+        console.error(error)
+  } 
+    
+    
+})
+
+/* router.post('/modificaricetta', async (req,res)=>{
+    const ricettaDaModificare = {
+        id:req.body.idObj,
+        title: req.body.titolo,
+        procedimento: req.body.howto, 
+        ingredienti: req.body.ingredienti,
+        immagine: req.body.urlimg
+    }
     await funzioniRicette.modificaRicetta(ricettaDaModificare) 
     res.redirect('/')
-})
+}) */
 
 router.all('*', (req, res) => {
     res.status(404).send('<h1 style="text-align:center;">Pagina non trovata</h1><h3 style="text-align:center;">Torna in <a href="/">home</a></h3>')
