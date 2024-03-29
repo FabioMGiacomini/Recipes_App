@@ -56,6 +56,9 @@ body{
         display: flex;
         justify-content: center;
     }
+    .single-recipe  .card-img-top{
+        max-height: 500px;
+    }
     .card-img-top{
         max-height: 200px;
         object-fit: cover;

@@ -13,8 +13,7 @@ const mostraRicette = async (req, res) => {
 // GET and return a single recipe 
 const singleRecipe = async (nome) => {
   try {
-    const ricerca = await Ricetta.findOne({title: nome})
-    console.log(ricerca);
+    const ricerca = await Ricetta.findOne({title: nome}) 
     return ricerca
   } catch (error) {
     console.error(error)
