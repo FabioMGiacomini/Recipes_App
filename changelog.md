@@ -1,3 +1,15 @@
+### 2024-03-28
+
+NEW 
+
+page created, single-recipe.ejs
+
+ricettario.js new function singleRecipe
+
+MODIFIED
+
+riecettario.js - ricetteRouter.js 
+
 ### 2024-03-27
 
 ##### Add
