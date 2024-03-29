@@ -10,12 +10,17 @@ const funzioniRicette = require('../controllers/ricettario')
 })   */  
 router.get('/', funzioniRicette.mostraRicette )  
 
-router.get('/ricetta/:titolo', async (req, res) => {
+/* router.get('/ricetta/:titolo', async (req, res) => {
     const nomeRicetta = req.params.titolo 
     const mostraRicetta = await funzioniRicette.cercaRicetta(nomeRicetta)
     res.send(mostraRicetta)
-  })
+  }) */
 
+router.get('/ricetta/:titolo', async (req, res) => { 
+    const titolo = req.params.titolo
+    const ricerca = await funzioniRicette.singleRecipe(titolo) 
+    res.render('pages/single-recipe', { ricerca }) 
+})
 
 router.get('/inserisci-ricetta', (req, res) => {
     res.render('pages/form')

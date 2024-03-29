@@ -10,10 +10,22 @@ const mostraRicette = async (req, res) => {
   }
 }   
 
+// GET and return a single recipe 
+const singleRecipe = async (nome) => {
+  try {
+    const ricerca = await Ricetta.findOne({title: nome})
+    console.log(ricerca);
+    return ricerca
+  } catch (error) {
+    console.error(error)
+  }
+}
+
 // find a single recipe by title
 const cercaRicetta = async (nome) => {
   try {
     const ricettaDaMostrare = await Ricetta.findOne({title: nome})
+    console.log(ricettaDaMostrare)
     return ricettaDaMostrare
   } catch (error) {
     console.error(error)
@@ -67,6 +79,7 @@ const eliminaRicetta = async (nome) => {
 module.exports = { 
   nuovaRicetta, 
   mostraRicette,
+  singleRecipe,
   cercaRicetta,
   modificaRicetta,
   eliminaRicetta, 

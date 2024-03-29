@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../partials/head') %>
+
+    <body>
+        <%- include('../partials/header') %>
+            <main>
+                <div class="nuovaricetta">
+                    <button onclick="location.href='inserisci-ricetta'" class="btn btn-outline-success">inserisci una
+                        nuova ricetta</button>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="single-recipe">
+                                <div class="col-12 col-lg-12 mt-2">
+                                    <div class="card mt-3 shadow border-0 h-100">
+                                            <% if(ricerca.immagine) { %>
+                                            <img  src="<%= ricerca.immagine %>" class="card-img-top" id="topFoto">
+                                            <label for="topFoto" class="topfoto">Credits: <%= ricerca.immagine %></label>
+                                            <% } %>
+                                            <div class="card-body d-flex justify-content-between pt-0">
+                                              <div class="pt-5">
+                                                  <h5 class="card-title mb-3"><%= ricerca.title %></h5>
+                                                  <p class="card-text mb-0 pb-1"><strong>Procedimento</strong><br> <%= ricerca.procedimento %></p> 
+                                                  <p class="card-text mb-0 pb-1"><strong>Ingredienti</strong><br> <%= ricerca.ingredienti %></p>                                        
+                                                 </div> 
+                                              <div class="d-flex justify-content-end p-3">
+                                                <div class="special-buttons"> 
+                                                  <a class="btn rounded-circle bg-success shadow me-2" href="/modifica/<%= ricerca.title %>">
+                                                      <i class="bi bi-pen" style="font-size: 1.6rem; color: rgb(255, 255, 255);"></i>
+                                                   </a>
+                                                  <a class="btn rounded-circle bg-danger shadow"  href="/elimina/<%= ricerca.title %>">
+                                                      <i class="bi bi-trash3" style="font-size: 1.6rem; color: rgb(255, 255, 255);"></i>
+                                                  </a>  
+                                                 </div>
+                                              </div>
+                                          </div>
+                                    </div> 
+                                </div> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+            <%- include('../partials/footer') %>
+    </body>
+
+</html>
