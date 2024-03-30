@@ -12,13 +12,13 @@ link go to the recipe and back home in every recipe and in homepage
 
 MODIFIED
 
-Ricettario.j: new way to manage function with Promise. 
+Ricettario.j: new way to manage function with Promise.
 
 RicetteRouter: try catch in every function
 
 ### 2024-03-28
 
-NEW 
+NEW
 
 page created, single-recipe.ejs
 
@@ -26,7 +26,7 @@ ricettario.js new function singleRecipe
 
 MODIFIED
 
-riecettario.js - ricetteRouter.js 
+riecettario.js - ricetteRouter.js
 
 ### 2024-03-27
 
