@@ -26,11 +26,11 @@ router.get('/inserisci-ricetta', (req, res) => {
     res.render('pages/form')
 })
 
-router.get('/elimina/:titolo', async (req, res) => {
+/* router.get('/elimina/:titolo', async (req, res) => {
     const nomeRicetta = req.params.titolo
     await funzioniRicette.eliminaRicetta(nomeRicetta) 
     res.redirect('/')
-})
+}) */
 
 router.post('/nuovaricetta', async (req,res)=>{
     try {
@@ -47,8 +47,6 @@ router.post('/nuovaricetta', async (req,res)=>{
         
     }
 })
-
-
 
 router.get('/modifica/:titolo', async (req, res) => {
     const nomeRicetta = req.params.titolo 
@@ -74,17 +72,17 @@ router.post('/modificaricetta', async (req,res)=>{
     
 })
 
-/* router.post('/modificaricetta', async (req,res)=>{
-    const ricettaDaModificare = {
-        id:req.body.idObj,
-        title: req.body.titolo,
-        procedimento: req.body.howto, 
-        ingredienti: req.body.ingredienti,
-        immagine: req.body.urlimg
+router.get('/elimina/:titolo', async (req, res) => {
+    try {
+        const nomeRicetta = req.params.titolo 
+        await funzioniRicette.deleteRecipe(nomeRicetta) 
+        res.redirect('/')
+    } catch (error) {
+        console.error(error)
     }
-    await funzioniRicette.modificaRicetta(ricettaDaModificare) 
-    res.redirect('/')
-}) */
+})
+
+
 
 router.all('*', (req, res) => {
     res.status(404).send('<h1 style="text-align:center;">Pagina non trovata</h1><h3 style="text-align:center;">Torna in <a href="/">home</a></h3>')

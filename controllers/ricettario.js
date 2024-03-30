@@ -50,25 +50,19 @@ function newRecipe(obj) {
 }  
 
 // Delete a recipe  
-const eliminaRicetta = async (nome) => {
-  try {
-    const ricettaDaEliminare = await Ricetta.deleteOne({title: nome})
-    
-    if (ricettaDaEliminare.deletedCount===0) {
-      return messaggio = 'nessuna ricetta eliminata'
-    } else if(ricettaDaEliminare.deletedCount===1){ 
-      return messaggio = `ricetta ${nome} eliminata`
-    }
-    return
-  } catch (error) {
-    console.error(error)
-  }
-}  
+function deleteRecipe(nome) {
+  return new Promise ((resolve,reject) => {
+    const p = Ricetta.deleteOne({title: nome})
+    resolve(p)
+  })
+}
+
+
   
 module.exports = {  
   mostraRicette,
   singleRecipe, 
   updateRecipe,
-  eliminaRicetta, 
   newRecipe,
+  deleteRecipe,
 }
