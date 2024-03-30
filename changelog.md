@@ -4,8 +4,11 @@ MODIFIED
 
 all functions in ricettario are promises now, all in ricetteRouter are try-catch
 
+<<<<<<< HEAD
 ciccio 2
 
+=======
+>>>>>>> parent of ff729e5 (changelog updated)
 ### 2024-03-29
 
 NEW
