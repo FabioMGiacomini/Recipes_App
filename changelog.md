@@ -4,8 +4,6 @@ MODIFIED
 
 all functions in ricettario are promises now, all in ricetteRouter are try-catch
 
-ciccio
-
 ### 2024-03-29
 
 NEW
