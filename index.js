@@ -5,12 +5,15 @@ const dotenv = require('dotenv')
 const connectDB = require('./data/connect')
 const routeRicette = require('./routes/ricetteRouter') 
 
+const app = express()
+
 // load config
 dotenv.config({ path: './.env' })
 connectDB()
 
-const app = express()
 
+
+// view engine setup
 app.set('view engine', 'ejs')  
 app.set('views', path.join(__dirname, 'views'))  
 

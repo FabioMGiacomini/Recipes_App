@@ -7,7 +7,12 @@
     "start": "PORT=80 NODE_ENV=production node index",
     "dev": "PORT=3000 NODE_ENV=development nodemon index"
   },
-  "keywords": [],
+  "keywords": [
+    "express",
+    "mongoDB",
+    "EJS",
+    "NodeJS"
+  ],
   "author": "Fabio Giacomini <info@viarete.it>",
   "license": "ISC",
   "dependencies": {
