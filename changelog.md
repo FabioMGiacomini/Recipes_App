@@ -1,3 +1,11 @@
+### 2024-04-01
+
+new branch authFunctions
+
+NEW
+
+new feature: auth module to login with user and password, passport module
+
 ### 2024-03-30
 
 MODIFIED
