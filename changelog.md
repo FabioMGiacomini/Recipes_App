@@ -1,10 +1,20 @@
 ### 2024-04-01
 
-new branch authFunctions
+NEW BRANCH
 
-NEW
+authFunctions to develop authorization system
 
-new feature: auth module to login with user and password, passport module
+NEW FEATURE
+
+auth module to login with user and password, passport module; session and username and email and pasword stored on mongo
+
+NEW PAGES
+
+login.ejs - signup.ejs
+
+NEW FILES
+
+userAuth - userSchema - authRouter - 
 
 ### 2024-03-30
 
