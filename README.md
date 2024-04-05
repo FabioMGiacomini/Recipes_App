@@ -2,7 +2,7 @@
 
 ## Description
 
-<p>You can do any CRUD (create, read, update, delete) operation. The app follows the MVC schema to have a cleaner structure</p>
+<p>You can do any CRUD (create, read, update, delete) operation. The app follows the MVC schema to have a cleaner structure</p><p>Signup or login to enter the app</p><p>Auth system available, realized with passport module and strategies</p>
 
 ## How to start
 
