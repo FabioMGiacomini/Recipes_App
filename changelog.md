@@ -1,3 +1,13 @@
+### 2024-04-05
+
+auth system completed, it works
+
+all pages under new path: /cucina
+
+login page is the new homepage
+
+signup page available
+
 ### 2024-04-01
 
 NEW BRANCH
@@ -14,7 +24,7 @@ login.ejs - signup.ejs
 
 NEW FILES
 
-userAuth - userSchema - authRouter - 
+userAuth - userSchema - authRouter -
 
 ### 2024-03-30
 

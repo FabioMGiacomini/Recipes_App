@@ -4,7 +4,7 @@ const passport = require('passport')
 const User = require('../models/userSchema')
 const manageUsers = require('../controllers/userAuth')
 
-router.get('/login', (req, res, next) => {
+router.get('/', (req, res, next) => {
     res.render('pages/login')
 })
 
@@ -26,6 +26,7 @@ router.get('/signup', (req, res, next) => {
     }
 }) */
 
+// passport function
 router.post('/signup', function (req, res) {
     User.register(
       new User({ 
@@ -43,11 +44,11 @@ router.post('/signup', function (req, res) {
 /*
   Login routes -- This is where we will use the 'local'
   passport authenciation strategy. If success, send to
-  /login-success, if failure, send to /login-failure
+  /login-success (homepage), if failure, send to /login-failure
 */
 router.post('/login', passport.authenticate('local', { 
     failureRedirect: '/login-failure', 
-    successRedirect: '/login-success'
+    successRedirect: '/cucina'
   }), (err, req, res, next) => {
     if (err) next(err);
   });

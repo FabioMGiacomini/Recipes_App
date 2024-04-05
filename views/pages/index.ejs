@@ -6,7 +6,7 @@
     <main>
 
     <div class="nuovaricetta">
-        <button onclick="location.href='inserisci-ricetta'" class="btn btn-outline-success">inserisci una nuova ricetta</button> 
+        <button onclick="location.href='/cucina/inserisci-ricetta'" class="btn btn-outline-success">inserisci una nuova ricetta</button> 
     </div>
     <div class="container">
         <div class="row">
@@ -26,14 +26,14 @@
                                             <h5 class="card-title mb-3"><%= element.title.toUpperCase() %></h5>
                                             <p class="card-text mb-0 pb-1"><strong>Procedimento</strong><br> <%= element.procedimento %></p> 
                                             <p class="card-text mb-0 pb-1 mb-5"><strong>Ingredienti</strong><br> <%= element.ingredienti %></p>  
-                                            <p class="card-text mb-0 pb-1 read-more"><a href="/ricetta/<%= element.title %>" class="text-decoration-none">Vai alla ricetta <i class="mt-1 ms-2 bi bi-arrow-right-circle"></i></a> </p>                                      
+                                            <p class="card-text mb-0 pb-1 read-more"><a href="cucina/ricetta/<%= element.title %>" class="text-decoration-none">Vai alla ricetta <i class="mt-1 ms-2 bi bi-arrow-right-circle"></i></a> </p>                                      
                                            </div> 
                                         <div class="d-flex justify-content-end p-3">
                                           <div class="special-buttons"> 
-                                            <a class="btn rounded-circle bg-success shadow me-2" href="/modifica/<%= element.title %>">
+                                            <a class="btn rounded-circle bg-success shadow me-2" href="cucina/modifica/<%= element.title %>">
                                                 <i class="bi bi-pen" style="font-size: 1.6rem; color: rgb(255, 255, 255);"></i>
                                              </a>
-                                            <a class="btn rounded-circle bg-danger shadow"  href="/elimina/<%= element.title %>">
+                                            <a class="btn rounded-circle bg-danger shadow"  href="cucina/elimina/<%= element.title %>">
                                                 <i class="bi bi-trash3" style="font-size: 1.6rem; color: rgb(255, 255, 255);"></i>
                                             </a>    
                                            </div>

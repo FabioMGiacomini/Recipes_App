@@ -8,7 +8,7 @@
         <div class="row">
             <div class="col-12">
                 <h3 class="mt-4">Modifica ricetta</h3>
-                <form action="/modificaricetta" method="POST">
+                <form action="/cucina/modificaricetta" method="POST">
                     <div> 
                         <input type="hidden" name="idObj" id="idObj" value="<%= mostraRicetta._id %>">
                     </div>
@@ -33,7 +33,7 @@
                         <% } %> 
                     </div>
                     <button type="submit" class="btn btn-outline-success">modifica ricetta</button>
-                    <button type="button" onclick="window.location.href='/'" class="btn btn-outline-danger">annulla</button>
+                    <button type="button" onclick="window.location.href='/cucina'" class="btn btn-outline-danger">annulla</button>
                 </form>
             </div>
         </div> 

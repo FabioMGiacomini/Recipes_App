@@ -76,7 +76,7 @@ router.get('/elimina/:titolo', async (req, res) => {
     try {
         const nomeRicetta = req.params.titolo 
         await funzioniRicette.deleteRecipe(nomeRicetta) 
-        res.redirect('/')
+        res.redirect('/cucina')
     } catch (error) {
         console.error(error)
     }
