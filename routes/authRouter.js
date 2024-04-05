@@ -4,6 +4,7 @@ const passport = require('passport')
 const User = require('../models/userSchema')
 const manageUsers = require('../controllers/userAuth')
 
+
 router.get('/', (req, res, next) => {
     res.render('pages/login')
 })
@@ -76,5 +77,20 @@ router.get('/profile', function(req, res) {
       res.json({ message: 'You are not authenticated' })
     }
   })
+
+/*   router.get('/logout', (req, res, next) => {
+    req.session.destroy(function(err) {
+      console.log(err);
+    })
+    res.render('pages/login')
+}) */
+
+router.get('/logout', (req, res, next) => {
+  req.logout((error) => {
+      if (error) {return next(error)}
+  })
+  res.redirect('/')
+})
+
 
 module.exports = router

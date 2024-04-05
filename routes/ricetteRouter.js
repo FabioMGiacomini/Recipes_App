@@ -2,9 +2,9 @@ const express = require('express')
 const router = express.Router()
 const Ricetta = require('../models/ricettaSchema')
 const funzioniRicette = require('../controllers/ricettario')
-  
+const { ensureAuth, ensureGuest } = require('../middleware/helpers')  
 
-router.get('/', async (req, res) => {
+router.get('/', ensureAuth, async (req, res) => {
     try {
         const ricetteDaMostrare = await funzioniRicette.mostraRicette() 
         res.render('pages/index', { ricetteDaMostrare })
@@ -22,7 +22,7 @@ try {
     } 
 })
 
-router.get('/inserisci-ricetta', (req, res) => {
+router.get('/inserisci-ricetta', ensureAuth, (req, res) => {
     res.render('pages/form')
 })
 
