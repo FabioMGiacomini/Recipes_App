@@ -17,7 +17,7 @@ There's no need to create a collection, the schema model creates that for you to
 
 ## Front Page
 
-The front end is rendered with the template engine `<a href="https://github.com/mde/ejs/tree/main">`EJS `</a>`
+The front end is rendered with the template engine <a href="https://github.com/mde/ejs/tree/main">EJS</a>
 
 The views folder contains pages and partials to create the site and to manage functions and parameters
 
