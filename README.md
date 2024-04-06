@@ -15,8 +15,12 @@ The only thing you need is an account on MongoDB Atlas (it's free) and a usernam
 
 There's no need to create a collection, the schema model creates that for you to avoid errors.
 
-### Front Page
+## Front Page
 
 <p>The front end is rendered with the template engine <a href="https://github.com/mde/ejs/tree/main">EJS</a>. </p>
 
-<p>The views folder contains pages and partials to create the site and to manage functions and parameters</p>
+`<p>`The views folder contains pages and partials to create the site and to manage functions and parameters `</p>`
+
+## Login Page
+
+Added a login page. You can view the homepage and all of the recipes as a guest but to modify or insert e new one you have to sign in.
