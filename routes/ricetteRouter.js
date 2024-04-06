@@ -3,6 +3,8 @@ const router = express.Router()
 const Ricetta = require('../models/ricettaSchema')
 const funzioniRicette = require('../controllers/ricettario')
 const { ensureAuth, ensureGuest } = require('../middleware/helpers')  
+//enusreauth garantisce che se inserisco 
+// un percorso valido in url senza essere loggato mi manda al login
 
 router.get('/', ensureAuth, async (req, res) => {
     try {
@@ -13,7 +15,7 @@ router.get('/', ensureAuth, async (req, res) => {
     }
 })  
 
-router.get('/ricetta/:titolo', async (req, res) => {  
+router.get('/ricetta/:titolo', ensureAuth, async (req, res) => {  
 try {
         const ricerca = await funzioniRicette.singleRecipe(req.params.titolo) 
         res.render('pages/single-recipe', { ricerca }) 
@@ -26,13 +28,7 @@ router.get('/inserisci-ricetta', ensureAuth, (req, res) => {
     res.render('pages/form')
 })
 
-/* router.get('/elimina/:titolo', async (req, res) => {
-    const nomeRicetta = req.params.titolo
-    await funzioniRicette.eliminaRicetta(nomeRicetta) 
-    res.redirect('/')
-}) */
-
-router.post('/nuovaricetta', async (req,res)=>{
+router.post('/nuovaricetta', ensureAuth, async (req,res)=>{
     try {
         const ricettaDaInserire = {
             title: req.body.titolo,
@@ -48,13 +44,13 @@ router.post('/nuovaricetta', async (req,res)=>{
     }
 })
 
-router.get('/modifica/:titolo', async (req, res) => {
+router.get('/modifica/:titolo', ensureAuth, async (req, res) => {
     const nomeRicetta = req.params.titolo 
     const mostraRicetta = await funzioniRicette.singleRecipe(nomeRicetta)
     res.render('pages/modificaform', { mostraRicetta })
 })
 
-router.post('/modificaricetta', async (req,res)=>{
+router.post('/modificaricetta', ensureAuth, async (req,res)=>{
     const ricettaDaModificare = {
         id:req.body.idObj,
         title: req.body.titolo,
@@ -72,7 +68,7 @@ router.post('/modificaricetta', async (req,res)=>{
     
 })
 
-router.get('/elimina/:titolo', async (req, res) => {
+router.get('/elimina/:titolo', ensureAuth, async (req, res) => {
     try {
         const nomeRicetta = req.params.titolo 
         await funzioniRicette.deleteRecipe(nomeRicetta) 
@@ -83,10 +79,6 @@ router.get('/elimina/:titolo', async (req, res) => {
 })
 
 
-
-/* router.all('*', (req, res) => {
-    res.status(404).send('<h1 style="text-align:center;">Pagina non trovata</h1><h3 style="text-align:center;">Torna in <a href="/">home</a></h3>')
-}) */
 
 
 module.exports = router

@@ -2,30 +2,15 @@ const express = require('express');
 const router = express.Router()
 const passport = require('passport')
 const User = require('../models/userSchema')
-const manageUsers = require('../controllers/userAuth')
+const { ensureAuth, ensureGuest } = require('../middleware/helpers')
 
-
-router.get('/', (req, res, next) => {
+router.get('/', ensureGuest, (req, res, next) => {
     res.render('pages/login')
 })
 
 router.get('/signup', (req, res, next) => {
     res.render('pages/signup')
 })
-
-/* router.post('/signup', async (req, res, next) => {
-    const newUser = { 
-        username: req.body.username,
-        password : req.body.password
-    }
-    try {
-        const registerNU = await manageUsers.registerUser(newUser) 
-        res.send('utente registrato')
-    } catch (error) {
-        console.error(error)
-        res.send('utente esistente')
-    }
-}) */
 
 // passport function
 router.post('/signup', function (req, res) {
@@ -48,21 +33,12 @@ router.post('/signup', function (req, res) {
   /login-success (homepage), if failure, send to /login-failure
 */
 router.post('/login', passport.authenticate('local', { 
-    failureRedirect: '/login-failure', 
+    failureRedirect: '/', 
     successRedirect: '/cucina'
   }), (err, req, res, next) => {
     if (err) next(err);
   });
   
-  router.get('/login-failure', (req, res, next) => {
-    console.log(req.session);
-    res.send('Login Attempt Failed.');
-  });
-  
-  router.get('/login-success', (req, res, next) => {
-    console.log(req.session);
-    res.send('Login Attempt was successful.');
-  });
 /*
   Protected Route -- Look in the account controller for
   how we ensure a user is logged in before proceeding.

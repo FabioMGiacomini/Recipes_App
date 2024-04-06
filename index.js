@@ -41,6 +41,8 @@ passport.deserializeUser(User.deserializeUser());
 app.use(passport.initialize());
 app.use(passport.session());
 
+// popper.js
+app.use('/dist', express.static(path.join(__dirname, './node_modules/@popperjs/core/dist')))
 // bootstrap files
 app.use('/css', express.static(path.join(__dirname, './node_modules/bootstrap/dist/css')))
 app.use('/css', express.static(path.join(__dirname, './node_modules/bootstrap-icons/font')))

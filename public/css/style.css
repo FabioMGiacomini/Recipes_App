@@ -13,6 +13,11 @@ body{
     color: #fff;
     text-align: center;
     padding: 20px;
+    padding-bottom: 0;
+    }
+    #nav-mobile i{
+        font-size: 24px;
+        margin: 0 10px;
     }
     form{
         border: 1px solid #dedede;
