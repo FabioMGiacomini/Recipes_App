@@ -3,10 +3,12 @@ const router = express.Router()
 const Ricetta = require('../models/ricettaSchema')
 const funzioniRicette = require('../controllers/ricettario')
 const { ensureAuth, ensureGuest } = require('../middleware/helpers')  
-//enusreauth garantisce che se inserisco 
+// ensureauth garantisce che se inserisco 
 // un percorso valido in url senza essere loggato mi manda al login
 
-router.get('/', ensureAuth, async (req, res) => {
+// qui non metto ensureAuth in modo da vedere le ricette anche come guest 
+// se però provo a modificarle mi manda al login
+router.get('/', async (req, res) => {
     try {
         const ricetteDaMostrare = await funzioniRicette.mostraRicette() 
         res.render('pages/index', { ricetteDaMostrare })
@@ -72,7 +74,7 @@ router.get('/elimina/:titolo', ensureAuth, async (req, res) => {
     try {
         const nomeRicetta = req.params.titolo 
         await funzioniRicette.deleteRecipe(nomeRicetta) 
-        res.redirect('/cucina')
+        res.redirect('/')
     } catch (error) {
         console.error(error)
     }

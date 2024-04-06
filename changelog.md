@@ -1,3 +1,9 @@
+### 2024-04-06
+
+/ is homepage now
+
+you can view the homepage without login but if you want to modify something you are redirect to login page, the same to insert a new recipe
+
 ### 2024-04-05
 
 auth system completed, it works

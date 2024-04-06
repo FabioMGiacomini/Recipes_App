@@ -4,11 +4,7 @@
 
     <body>
         <%- include('../partials/header') %>
-            <main>
-                <!--  <div class="nuovaricetta">
-                    <button onclick="location.href='inserisci-ricetta'" class="btn btn-outline-success">inserisci una
-                        nuova ricetta</button>
-                </div> -->
+            <main> 
                 <div class="container">
                     <div class="row">
                         <div class="col-12">
@@ -33,15 +29,15 @@
                                                         </p>
                                                     </div>
                                                     <div class="d-flex justify-content-between align-items-end p-3">
-                                                        <p class="card-text mb-0 read-more"><a href="/cucina">Torna indietro</a> </p>
+                                                        <p class="card-text mb-0 read-more"><a href="/">Torna indietro</a> </p>
                                                         <div class="special-buttons">
                                                             <a class="btn rounded-circle bg-success shadow me-2"
-                                                                href="/cucina/modifica/<%= ricerca.title %>">
+                                                                href="/modifica/<%= ricerca.title %>">
                                                                 <i class="bi bi-pen"
                                                                     style="font-size: 1.6rem; color: rgb(255, 255, 255);"></i>
                                                             </a>
                                                             <a class="btn rounded-circle bg-danger shadow"
-                                                                href="/cucina/elimina/<%= ricerca.title %>">
+                                                                href="/elimina/<%= ricerca.title %>">
                                                                 <i class="bi bi-trash3"
                                                                     style="font-size: 1.6rem; color: rgb(255, 255, 255);"></i>
                                                             </a>

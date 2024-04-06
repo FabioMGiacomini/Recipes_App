@@ -51,7 +51,7 @@ app.use('/js', express.static(path.join(__dirname, './node_modules/bootstrap/dis
 app.use(express.static(path.join(__dirname + '/public')))
 
 app.use("/", authRouter)
-app.use("/cucina", routeRicette);  
+app.use("/", routeRicette);  
 
 const PORT = process.env.PORT
 app.listen(PORT, () => console.log(`server running in ${process.env.NODE_ENV} mode on port ${PORT}`))

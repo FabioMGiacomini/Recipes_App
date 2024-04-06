@@ -4,7 +4,7 @@ const passport = require('passport')
 const User = require('../models/userSchema')
 const { ensureAuth, ensureGuest } = require('../middleware/helpers')
 
-router.get('/', ensureGuest, (req, res, next) => {
+router.get('/login', ensureGuest, (req, res, next) => {
     res.render('pages/login')
 })
 
@@ -33,8 +33,8 @@ router.post('/signup', function (req, res) {
   /login-success (homepage), if failure, send to /login-failure
 */
 router.post('/login', passport.authenticate('local', { 
-    failureRedirect: '/', 
-    successRedirect: '/cucina'
+    failureRedirect: '/login', 
+    successRedirect: '/'
   }), (err, req, res, next) => {
     if (err) next(err);
   });
