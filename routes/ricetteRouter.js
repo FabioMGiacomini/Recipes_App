@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 const Ricetta = require('../models/ricettaSchema')
 const funzioniRicette = require('../controllers/ricettario')
+const { findUser } = require('../controllers/userAuth')
 const { ensureAuth, ensureGuest } = require('../middleware/helpers')  
 // ensureauth garantisce che se inserisco 
 // un percorso valido in url senza essere loggato mi manda al login
@@ -11,7 +12,7 @@ const { ensureAuth, ensureGuest } = require('../middleware/helpers')
 router.get('/', async (req, res) => {
     try {
         const ricetteDaMostrare = await funzioniRicette.mostraRicette() 
-        res.render('pages/index', { ricetteDaMostrare })
+        res.render('pages/index', { ricetteDaMostrare })     
     } catch (error) {
         console.error(error)
     }

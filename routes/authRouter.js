@@ -27,6 +27,7 @@ router.post('/signup', function (req, res) {
       }
     )
   })
+  
 /*
   Login routes -- This is where we will use the 'local'
   passport authenciation strategy. If success, send to
@@ -53,13 +54,6 @@ router.get('/profile', function(req, res) {
       res.json({ message: 'You are not authenticated' })
     }
   })
-
-/*   router.get('/logout', (req, res, next) => {
-    req.session.destroy(function(err) {
-      console.log(err);
-    })
-    res.render('pages/login')
-}) */
 
 router.get('/logout', (req, res, next) => {
   req.logout((error) => {

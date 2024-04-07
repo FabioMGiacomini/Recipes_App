@@ -10,7 +10,7 @@ module.exports = {
     },
     ensureGuest: function (req, res, next) {
         if (req.isAuthenticated()) {
-            res.redirect('/cucina') 
+            res.redirect('/') 
         } else {
             return next()
         }
