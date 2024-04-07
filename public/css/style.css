@@ -59,6 +59,12 @@ body{
         grid-template-columns: 1fr; 
         margin: auto; 
     }
+    .ricetta{
+        margin-top: 30px;
+    }
+    .ricetta:first-child{
+        margin-top: 0;
+    }
     .nuovaricetta{
         display: flex;
         justify-content: center;

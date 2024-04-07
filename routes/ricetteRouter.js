@@ -10,9 +10,16 @@ const { ensureAuth, ensureGuest } = require('../middleware/helpers')
 // qui non metto ensureAuth in modo da vedere le ricette anche come guest 
 // se però provo a modificarle mi manda al login
 router.get('/', async (req, res) => {
+    const ricetteDaMostrare = await funzioniRicette.mostraRicette() 
     try {
-        const ricetteDaMostrare = await funzioniRicette.mostraRicette() 
-        res.render('pages/index', { ricetteDaMostrare })     
+        if (req.isAuthenticated()) {
+            const utente = req.user.username
+            console.log(utente);
+            res.render('pages/index', { utente, ricetteDaMostrare })    
+        } else {
+            const utente = 'guest' 
+            res.render('pages/index', { utente, ricetteDaMostrare })    
+        } 
     } catch (error) {
         console.error(error)
     }
