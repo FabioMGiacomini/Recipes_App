@@ -11,21 +11,15 @@ const { ensureAuth, ensureGuest } = require('../middleware/helpers')
 // se però provo a modificarle mi manda al login
 router.get('/', async (req, res) => {
     const ricetteDaMostrare = await funzioniRicette.mostraRicette() 
-    try {
-        if (req.isAuthenticated()) {
-            const utente = req.user.username
-            console.log(utente);
-            res.render('pages/index', { utente, ricetteDaMostrare })    
-        } else {
-            const utente = 'guest' 
-            res.render('pages/index', { utente, ricetteDaMostrare })    
-        } 
+    try { 
+        const utente = req.isAuthenticated() ? req.user.username : 'guest'
+        res.render('pages/index', { utente, ricetteDaMostrare })   
     } catch (error) {
         console.error(error)
     }
 })  
 
-router.get('/ricetta/:titolo', ensureAuth, async (req, res) => {  
+router.get('/ricetta/:titolo', async (req, res) => {  
 try {
         const ricerca = await funzioniRicette.singleRecipe(req.params.titolo) 
         res.render('pages/single-recipe', { ricerca }) 
@@ -74,8 +68,7 @@ router.post('/modificaricetta', ensureAuth, async (req,res)=>{
   } catch (error) {
         console.error(error)
   } 
-    
-    
+     
 })
 
 router.get('/elimina/:titolo', ensureAuth, async (req, res) => {
