@@ -24,7 +24,7 @@ app.use(express.json())
 
 app.use(session({
     secret: 'foo',
-    resave: false,
+    resave: true,
     saveUninitialized: false,
     store: MongoStore.create({ mongoUrl: mongoose.connection.client.s.url })
   }));

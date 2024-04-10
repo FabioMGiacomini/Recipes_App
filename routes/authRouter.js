@@ -33,12 +33,11 @@ router.post('/signup', function (req, res) {
   passport authenciation strategy. If success, send to
   /login-success (homepage), if failure, send to /login-failure
 */
-router.post('/login', passport.authenticate('local', { 
-    failureRedirect: '/login', 
-    successRedirect: '/'
-  }), (err, req, res, next) => {
-    if (err) next(err);
-  });
+router.post('/login', passport.authenticate('local', {failureRedirect:'/login'}), function (req, res) {
+   // If this function gets called, authentication was successful.
+   // `req.user` contains the authenticated user.
+   res.redirect('/')
+})
   
 /*
   Protected Route -- Look in the account controller for
