@@ -1,7 +1,7 @@
 {
   "name": "recipes_app",
   "version": "1.0.0",
-  "description": "italians recipes",
+  "description": "italian recipes",
   "main": "index.js",
   "scripts": {
     "start": "PORT=80 NODE_ENV=production node index",
