@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const Ricetta = require('../models/ricettaSchema')
-const funzioniRicette = require('../controllers/ricettario')
+const funzioniRicette = require('../controllers/ricetteController')
 const { findUser } = require('../controllers/userAuth')
 const { ensureAuth, ensureGuest } = require('../middleware/helpers')  
 // ensureauth garantisce che se inserisco 
