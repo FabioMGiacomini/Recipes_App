@@ -1,3 +1,9 @@
+### 2024-04-15
+
+new branch: I want to change how ricettario.js and ricetteRouter.js work
+
+Now the router file contains just the routes of the functions. All the logic is in controller file
+
 ### 2024-04-06
 
 / is homepage now
@@ -5,6 +11,8 @@
 you can view the homepage without login but if you want to modify something you are redirect to login page, the same to insert a new recipe
 
 ### 2024-04-05
+
+ensureauth garantisce che se inserisco un percorso valido in url senza essere loggato mi manda al login. non lo metto alla funzione che visualizza la home per consentire a guest di vedere senza modificare. se guest prova a modificarle mi manda al login
 
 auth system completed, it works
 

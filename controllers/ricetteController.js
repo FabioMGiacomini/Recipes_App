@@ -1,67 +1,94 @@
-const Ricetta = require('../models/ricettaSchema')
+const Ricetta = require('../models/ricettaSchema') 
 
-// GET all recipes  
-function mostraRicette() {
-  return new Promise((resolve, reject) => {
-    const allRecipes = Ricetta.find({})
-    resolve(allRecipes)
-  })
-}   
+// @desc    GET all recipes  
+const mostraRicette = async (req, res) => {
+  const ricetteDaMostrare = await Ricetta.find({}) 
+  try { 
+      const utente = req.isAuthenticated() ? req.user.username : 'guest'
+      res.render('pages/index', { utente, ricetteDaMostrare })   
+  } catch (error) {
+      console.error(error)
+  }
+}
+   
+// @desc    Find a single recipe by title
+const singleRecipe = async (req, res) => {  
+  try {
+          const ricerca = await Ricetta.findOne({title: req.params.titolo}) 
+          res.render('pages/single-recipe', { ricerca }) 
+      } catch (error) {
+          console.error(error)
+      } 
+  }
 
-// @desc Find a single recipe by title
-function singleRecipe(nome) {
-  return new Promise((resolve, reject) => {
-    const ricettaSingola = Ricetta.findOne({ title: nome })
-    resolve(ricettaSingola)
-  })
+// @desc    Create new recipe
+const newRecipe = async (req,res) => {
+  try {
+      const ricettaDaInserire = {
+          title: req.body.titolo,
+          procedimento: req.body.howto,  
+          ingredienti: req.body.ingredienti, 
+          immagine: req.body.urlimg
+      }
+     const newRicetta = new Ricetta(ricettaDaInserire)   
+     const ricerca = await newRicetta.save()   
+     res.render('pages/single-recipe', { ricerca }) 
+      
+  } catch (error) {
+      console.log(error);
+  }
 }
 
-// @desc Create new recipe
-function newRecipe(obj) {
-  return new Promise((resolve, reject) => {
-    const saveRecipe = new Ricetta(obj)
-    saveRecipe.save()
-    resolve(saveRecipe)
-  })
+/* 
+** @desc    To update the recipe I have to find and return its title and id
+*/
+const updateTitle = async (req, res) => {
+    const mostraRicetta = await Ricetta.findOne({title: req.params.titolo}) 
+    res.render('pages/modificaform', { mostraRicetta })
 }
-
 
 /* @params   upsert: if true, and no documents found, insert a new document 
 **           new: if true, return the modified document rather than the original
 ** @desc     update a recipe and goes to the recipe page right after
 */
-  function updateRecipe(modobj) {
-  const filter = { _id: modobj.id }
-  const update = {
-    title: modobj.title,
-    procedimento: modobj.procedimento,
-    ingredienti: modobj.ingredienti,
-    immagine: modobj.immagine,
-  }
+const updateRecipe = async (req,res) => {
+  const filter = { _id: req.body.idObj }
   const options = {
     upsert: true,
     new: true
   }
-  return new Promise((resolve,reject)=>{
-    const ricetteDaMostrare = Ricetta.findByIdAndUpdate(filter, update, options)
-    resolve(ricetteDaMostrare)
-  })
-  
-}  
-
-// Delete a recipe  
-function deleteRecipe(nome) {
-  return new Promise ((resolve,reject) => {
-    const p = Ricetta.deleteOne({title: nome})
-    resolve(p)
-  })
+  const ricettaDaModificare = {
+      title: req.body.titolo,
+      procedimento: req.body.howto, 
+      ingredienti: req.body.ingredienti,
+      immagine: req.body.urlimg
+  }
+  try {
+      const ricerca = await Ricetta.findByIdAndUpdate(filter, ricettaDaModificare, options)
+      res.render('pages/single-recipe', { ricerca }) 
+} catch (error) {
+      console.error(error)
+} 
 }
 
+/* 
+** @desc     Delete a recipe and goes to homepage
+*/
 
+const deleteRecipe = async (req, res) => {
+  try {
+      const nomeRicetta = req.params.titolo 
+      await Ricetta.deleteOne({ title: nomeRicetta }) 
+      res.redirect('/')
+  } catch (error) {
+      console.error(error)
+  }
+}
   
 module.exports = {  
   mostraRicette,
   singleRecipe, 
+  updateTitle,
   updateRecipe,
   newRecipe,
   deleteRecipe,
